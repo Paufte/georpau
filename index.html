@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#92182a">
+<title>GEORPAU Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Italiana&family=Nothing+You+Could+Do&display=swap">
+<style>
+/* Layout: a locked magazine. Gate -> cover -> live counter -> illustrated map (Mediterranean + Barcelona/Sant Cugat inset + Roma stamp) -> timeline -> contact-sheet gallery -> cinema -> quiz -> reasons -> contract -> song -> sealed letter -> vouchers. One printed-paper look on purpose. */
+:root {
+  --paper: #f6f1e8;
+  --paper-2: #efe5d6;
+  --card: #fbf8f2;
+  --ink: #201917;
+  --granat: #92182a;
+  --blush: #f3ccc6;
+  --mute: #7d7068;
+  --sea: #dfe6e3;
+  --land: #efe4cf;
+  --film: #1c1918;
+  --gold: #c8a35e;
+  --display: "Gloock", "Bodoni 72", Didot, Georgia, serif;
+  --title: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --num: "Italiana", "Instrument Serif", Georgia, serif;
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --hand: "Nothing You Could Do", "Segoe Print", cursive;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; margin: 0; }
+button { font: inherit; color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+.kicker { font: 700 .72rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--granat); margin: 0; }
+h2 { font: 400 clamp(2.4rem, 7vw, 4.4rem)/1 var(--title); margin: .3em 0 .25em; text-wrap: balance; }
+h2 em { font-style: italic; }
+.lead { font: italic 400 clamp(1.1rem, 2.3vw, 1.3rem)/1.45 var(--title); color: var(--mute); max-width: 52ch; margin: 0; }
+section { padding-block: clamp(56px, 9vw, 104px); }
+:focus-visible { outline: 2px solid var(--granat); outline-offset: 3px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 13px 22px; font: 700 .76rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; cursor: pointer; text-decoration: none; }
+.btn:hover { background: var(--granat); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px currentColor; }
+.btn.ghost:hover { color: var(--granat); background: transparent; }
+
+/* ---------- gate ---------- */
+#gate { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: var(--paper); }
+#gate .box { width: min(460px, 100%); text-align: center; display: grid; gap: 18px; }
+#gate .mast { font: 400 clamp(3.8rem, 18vw, 7rem)/.9 var(--display); color: var(--granat); margin: 0; }
+#gate .sub { font: 600 .7rem/1.6 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--mute); margin: 0; }
+#gate .seal { width: 92px; height: 92px; margin: 6px auto 0; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #b8323f, #7a0f1f 70%); color: #f7c9c3; font: 400 1.5rem/1 var(--display); box-shadow: 0 8px 18px rgba(80,10,20,.3); }
+#gate form { display: grid; gap: 12px; }
+#gate input { width: 100%; padding: 15px 18px; border-radius: 999px; border: 1px solid #d3c4b0; background: var(--card); font: 400 1.15rem/1 var(--title); text-align: center; color: var(--ink); }
+#gate .hint { font: italic 400 1.05rem/1.3 var(--title); color: var(--mute); margin: 0; }
+#gate .err { color: var(--granat); font: 600 .85rem/1.3 var(--sans); min-height: 1.3em; margin: 0; }
+#gate .note { font: 400 .78rem/1.5 var(--sans); color: var(--mute); margin: 8px 0 0; }
+
+/* ---------- cover ---------- */
+.cover { position: relative; min-height: min(92vh, 980px); display: grid; overflow: hidden; background: var(--film); color: #fffaf3; }
+.cover .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(20,14,12,.8) 100%); pointer-events: none; }
+.cover-in { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; padding-block: 20px 40px; }
+.issue { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font: 600 .7rem/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--ink); }
+.cover .mast { font: 400 clamp(4.2rem, 19vw, 13.5rem)/.86 var(--display); color: var(--granat); margin: 10px 0 0; text-align: center; }
+.forher { font: 400 clamp(1.3rem, 3.6vw, 2.2rem)/1 var(--hand); color: var(--granat); transform: rotate(-4deg); align-self: flex-end; margin: 4px 4% 0 0; }
+.names { font: 400 clamp(3rem, 11vw, 7rem)/.92 var(--title); margin: 0; }
+.names em { font-style: italic; }
+.dek { font: italic 400 clamp(1.05rem, 2.4vw, 1.35rem)/1.4 var(--title); max-width: 40ch; margin: 14px 0 0; color: #f3e9dc; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.toc a { color: #fffaf3; text-decoration: none; font: 700 .68rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; padding: 9px 13px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,250,243,.5); }
+.toc a:hover { background: rgba(255,250,243,.15); }
+
+/* ---------- counter ---------- */
+.counter { background: var(--granat); color: #fbf3ea; }
+.counter .wrap { display: grid; gap: 28px; }
+.counter .kicker { color: var(--blush); }
+.clock { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.unit { border-top: 1px solid rgba(251,243,234,.4); padding-top: 12px; }
+.unit b { display: block; font: 400 clamp(2.4rem, 8vw, 5.4rem)/1 var(--num); font-variant-numeric: tabular-nums; }
+.unit span { font: 700 .66rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--blush); }
+.next { font: italic 400 clamp(1.15rem, 2.6vw, 1.5rem)/1.4 var(--title); margin: 0; }
+.next strong { font-style: normal; font-family: var(--num); font-size: 1.3em; }
+
+/* ---------- map ---------- */
+.maps { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 22px; margin-top: 34px; align-items: start; }
+.mapcard { background: var(--card); border: 1px solid #e3d6c4; border-radius: 6px; padding: 10px; position: relative; }
+.mapcard .tag { position: absolute; top: 18px; left: 22px; font: 700 .64rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--mute); }
+.mapcard svg { width: 100%; height: auto; display: block; }
+.pin { cursor: pointer; }
+.pin circle.dot { fill: var(--granat); stroke: var(--card); stroke-width: 3; transition: r .15s; }
+.pin path.heart { fill: var(--granat); stroke: var(--card); stroke-width: 2.5; }
+.pin text { font: 600 17px var(--sans); fill: var(--ink); paint-order: stroke; stroke: var(--card); stroke-width: 5px; stroke-linejoin: round; }
+.pin text.date { font: italic 400 15px var(--title); fill: var(--mute); }
+.pin:hover circle.dot, .pin:focus circle.dot { r: 11; }
+.pin:hover text.name, .pin:focus text.name { fill: var(--granat); }
+.pin:focus { outline: none; }
+.pin:focus-visible circle.dot { stroke: var(--ink); }
+.zone { fill: none; stroke: var(--granat); stroke-width: 1.5; stroke-dasharray: 5 5; cursor: pointer; }
+.maplist { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.maplist button { background: var(--card); border: 1px solid #e3d6c4; border-radius: 999px; padding: 8px 14px; cursor: pointer; font: 600 .82rem/1 var(--sans); }
+.maplist button:hover { border-color: var(--granat); color: var(--granat); }
+.maplist button small { font: italic 400 .9rem var(--title); color: var(--mute); margin-left: 6px; }
+
+/* ---------- timeline ---------- */
+.tl { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.tl li { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.arch { aspect-ratio: 3 / 4.2; border-radius: 999px 999px 4px 4px; overflow: hidden; background: var(--paper-2); max-width: 100%; }
+.arch img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tl time { font: 400 1.7rem/1 var(--num); color: var(--granat); margin-top: 8px; }
+.tl b { font: 700 .7rem/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+.tl p { margin: 0; font: italic 400 1.02rem/1.35 var(--title); color: var(--mute); }
+
+/* ---------- gallery ---------- */
+.sheet { background: var(--film); color: #f4ede3; }
+.sheet .kicker { color: #e8a65c; }
+.sheet .lead { color: #c9bfb3; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.tabs button { background: transparent; border: 0; box-shadow: inset 0 0 0 1px rgba(244,237,227,.35); color: #f4ede3; border-radius: 999px; padding: 9px 15px; cursor: pointer; font: 700 .7rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+.tabs button[aria-pressed="true"] { background: #f4ede3; color: var(--film); }
+.tabs button span { font-family: var(--num); letter-spacing: 0; margin-left: 6px; }
+.gsub { font: italic 400 1.1rem var(--title); color: #c9bfb3; margin: 18px 0 0; }
+.grid { columns: 4 200px; column-gap: 12px; margin-top: 22px; }
+.grid figure { break-inside: avoid; margin: 0 0 12px; background: #f6f1e8; padding: 6px 6px 8px; border-radius: 2px; transform: rotate(var(--r, 0deg)); transition: transform .25s ease; }
+.grid figure:hover { transform: rotate(0) scale(1.015); }
+.grid button { all: unset; cursor: zoom-in; display: block; width: 100%; }
+.grid button:focus-visible { outline: 2px solid #e8a65c; outline-offset: 4px; }
+.ph { display: block; width: 100%; height: auto; background: #d9cfc2; aspect-ratio: var(--ar, 3/4); object-fit: cover; }
+
+/* ---------- cinema ---------- */
+.cinema { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr)); gap: 14px; margin-top: 30px; }
+.reel { position: relative; aspect-ratio: 9 / 14; border-radius: 6px; overflow: hidden; background: var(--film); cursor: pointer; border: 0; padding: 0; }
+.reel img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .9; }
+.reel::after { content: "▶"; position: absolute; inset: auto 12px 12px auto; width: 44px; height: 44px; border-radius: 50%; background: var(--paper); color: var(--granat); display: grid; place-items: center; font-size: 15px; padding-left: 3px; }
+.reel span { position: absolute; left: 12px; top: 10px; font: 400 1.4rem var(--num); color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+
+/* ---------- quiz ---------- */
+.quiz { background: var(--paper-2); }
+.qbox { max-width: 720px; margin-top: 30px; background: var(--card); border: 1px solid #e3d6c4; border-radius: 8px; padding: clamp(20px, 4vw, 36px); }
+.qtop { display: flex; justify-content: space-between; gap: 12px; font: 700 .7rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--mute); }
+.qbar { height: 4px; background: #eadfce; border-radius: 4px; margin: 12px 0 22px; overflow: hidden; }
+.qbar i { display: block; height: 100%; background: var(--granat); transition: width .3s; }
+.qq { font: 400 clamp(1.6rem, 4vw, 2.3rem)/1.15 var(--title); margin: 0 0 20px; text-wrap: balance; }
+.qopts { display: grid; gap: 10px; }
+.qopts button { text-align: left; background: var(--paper); border: 1px solid #e3d6c4; border-radius: 10px; padding: 14px 16px; cursor: pointer; font: 600 1rem/1.3 var(--sans); display: flex; gap: 12px; align-items: center; }
+.qopts button b { font: 400 1.2rem var(--num); color: var(--granat); width: 1.2em; }
+.qopts button:hover:not(:disabled) { border-color: var(--granat); }
+.qopts button.ok { background: #e4efe3; border-color: #3f7a4a; }
+.qopts button.ko { background: #f7e1df; border-color: var(--granat); }
+.qopts button:disabled { cursor: default; }
+.qexp { font: italic 400 1.15rem/1.4 var(--title); color: var(--mute); min-height: 1.5em; margin: 16px 0; }
+.qend { text-align: center; }
+.qend .score { font: 400 clamp(4rem, 14vw, 7rem)/1 var(--num); color: var(--granat); margin: 0; }
+
+/* ---------- reasons ---------- */
+.rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px; margin-top: 30px; }
+.rcard { perspective: 900px; aspect-ratio: 4 / 3.2; border: 0; padding: 0; background: none; cursor: pointer; }
+.rin { position: relative; width: 100%; height: 100%; transition: transform .6s; transform-style: preserve-3d; }
+.rcard[aria-pressed="true"] .rin { transform: rotateY(180deg); }
+.rf, .rb { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 8px; display: grid; place-items: center; padding: 18px; text-align: center; }
+.rf { background: var(--granat); color: var(--blush); }
+.rf b { display: block; font: 400 3.4rem/1 var(--num); color: #fff; }
+.rf small { font: 700 .66rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; }
+.rb { background: var(--card); border: 1px solid #e3d6c4; transform: rotateY(180deg); font: italic 400 1.2rem/1.35 var(--title); color: var(--ink); }
+
+/* ---------- contract ---------- */
+.doc { max-width: 760px; margin: 30px auto 0; background: #fffdf8; border: 1px solid #e1d3bf; padding: clamp(22px, 5vw, 56px); box-shadow: 0 18px 40px rgba(60,40,30,.1); position: relative; }
+.doc h3 { font: 400 clamp(1.8rem, 5vw, 2.6rem)/1.05 var(--display); text-align: center; margin: 0; color: var(--granat); }
+.doc .parts { text-align: center; font: italic 400 1.1rem/1.4 var(--title); color: var(--mute); margin: 10px 0 26px; }
+.doc ol { margin: 0; padding: 0; list-style: none; counter-reset: c; display: grid; gap: 14px; }
+.doc li { counter-increment: c; display: grid; grid-template-columns: 4.6em minmax(0, 1fr); gap: 10px; font: 400 1.08rem/1.5 var(--title); }
+.doc li::before { content: "Cl. " counter(c); font: 700 .72rem/2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--granat); }
+.doc li b { font: 700 .74rem var(--sans); letter-spacing: .14em; text-transform: uppercase; display: block; }
+.sigs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; margin-top: 34px; }
+.sig { display: grid; gap: 8px; }
+.sig .line { border-bottom: 1px solid var(--ink); height: 110px; display: grid; align-items: end; position: relative; }
+.sig .pau { font: 400 2.6rem/1 var(--hand); color: var(--granat); padding-bottom: 6px; }
+.sig canvas { width: 100%; height: 110px; touch-action: none; cursor: crosshair; display: block; }
+.sig small { font: 700 .66rem/1.3 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--mute); display: flex; justify-content: space-between; gap: 8px; }
+.sig small button { background: none; border: 0; padding: 0; font: inherit; color: var(--granat); cursor: pointer; letter-spacing: .14em; }
+.stamp { position: absolute; right: 6%; bottom: 120px; transform: rotate(-12deg); border: 3px solid var(--granat); color: var(--granat); border-radius: 8px; padding: 8px 14px; font: 700 .8rem/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; text-align: center; background: rgba(255,253,248,.85); }
+
+/* ---------- song + letter ---------- */
+.song .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.tape { aspect-ratio: 16 / 10.4; max-width: 100%; background: #2a2527; border-radius: 22px; padding: 6%; position: relative; box-shadow: 0 18px 40px rgba(40,24,20,.25); transform: rotate(-3deg); }
+.tape .label { background: #f4e8d2; border-radius: 8px; height: 62%; position: relative; overflow: hidden; }
+.tape .label::before { content: "A"; position: absolute; inset: 0 0 auto 0; height: 24%; background: var(--granat); color: #fff; font: 700 .9rem/1 var(--sans); display: flex; align-items: center; padding-left: 4%; }
+.tape .label span { position: absolute; top: 36%; left: 0; right: 0; text-align: center; font: 400 clamp(1rem, 3vw, 1.6rem)/1 var(--hand); color: var(--ink); }
+.tape .win { position: absolute; left: 26%; right: 26%; top: 49%; height: 13%; background: #1a1718; border-radius: 99px; display: flex; justify-content: space-between; align-items: center; padding: 0 6%; }
+.spool { width: 22%; aspect-ratio: 1; border-radius: 50%; border: 5px dotted #f4e8d2; animation: spin 4s linear infinite; animation-play-state: var(--play, paused); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.song p { font: italic 400 1.25rem/1.45 var(--title); margin: 0 0 22px; max-width: 34ch; }
+.letter { background: var(--paper-2); }
+.env { max-width: 640px; margin: 28px auto 0; background: var(--card); border: 1px solid #e3d6c4; padding: clamp(24px, 6vw, 56px); box-shadow: 0 16px 40px rgba(60,40,30,.12); }
+.lacre { border: 0; cursor: pointer; display: grid; place-items: center; width: 132px; aspect-ratio: 1; margin: 6px auto 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #b8323f, #7a0f1f 70%); color: #f7c9c3; font: 400 2rem/1 var(--display); box-shadow: 0 8px 18px rgba(80,10,20,.35); }
+.hint2 { text-align: center; font: 700 .7rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--mute); margin-top: 16px; }
+.msg p { font: 400 1.2rem/1.6 var(--title); margin: 0 0 1em; }
+.msg .signa { font: 400 2.6rem/1 var(--hand); color: var(--granat); margin: 10px 0 18px; }
+.vals { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.vals p { font: italic 400 1.25rem/1.45 var(--title); margin: 0; max-width: 36ch; }
+.stub { background: var(--card); border: 2px dashed var(--granat); padding: 22px 24px; transform: rotate(2deg); }
+.stub b { display: block; font: italic 400 1.9rem/1.05 var(--title); margin: 6px 0; }
+.stub small { font: 600 .72rem/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+footer { border-top: 1px solid #d8cbb9; padding-block: 36px 48px; text-align: center; }
+footer .m { font: 400 2.6rem/1 var(--display); color: var(--granat); }
+footer p { margin: 8px 0 0; font: 600 .7rem/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--mute); }
+footer button { margin-top: 18px; }
+
+/* ---------- viewer ---------- */
+.viewer { position: fixed; inset: 0; z-index: 20; background: rgba(18,14,13,.95); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; padding: calc(env(safe-area-inset-top, 0px) + 12px) 12px calc(env(safe-area-inset-bottom, 0px) + 12px); color: #f4ede3; }
+.vhead { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 4px 6px 12px; max-width: 1100px; width: 100%; margin: 0 auto; }
+.vhead h3 { font: 400 clamp(1.6rem, 4vw, 2.4rem)/1 var(--title); margin: 0; }
+.vhead p { margin: 6px 0 0; font: italic 400 1.1rem/1.35 var(--title); color: #d8cdbf; max-width: 60ch; }
+.vhead .d { font: 700 .66rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: #e8a65c; }
+.vclose { background: none; border: 1px solid rgba(244,237,227,.4); color: #f4ede3; border-radius: 999px; padding: 9px 15px; cursor: pointer; font: 700 .7rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; flex: none; }
+.vstage { position: relative; display: grid; place-items: center; min-height: 0; }
+.vstage { overflow: hidden; }
+.vstage img, .vstage video { max-width: 100%; max-height: calc(100vh - 230px); object-fit: contain; border-radius: 3px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.vstage .load { font: italic 400 1.2rem var(--title); color: #c9bfb3; }
+.vnav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(244,237,227,.92); color: var(--ink); font-size: 20px; cursor: pointer; }
+.vnav.p { left: 4px; } .vnav.n { right: 4px; }
+.vfoot { display: flex; gap: 6px; overflow-x: auto; padding: 12px 6px 2px; max-width: 1100px; width: 100%; margin: 0 auto; scrollbar-width: thin; }
+.vfoot button { flex: none; width: 54px; height: 54px; border-radius: 4px; overflow: hidden; border: 2px solid transparent; padding: 0; background: #3a3331; cursor: pointer; position: relative; }
+.vfoot button[aria-current="true"] { border-color: #e8a65c; }
+.vfoot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vfoot button.isv::after { content: "▶"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 13px; text-shadow: 0 0 6px #000; }
+.vcount { text-align: center; font: 400 1rem var(--num); color: #c9bfb3; padding-top: 6px; }
+
+@media (max-width: 860px) {
+  .maps { grid-template-columns: minmax(0, 1fr); }
+  .tl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .song .wrap, .vals, .sigs { grid-template-columns: minmax(0, 1fr); }
+  .clock { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stamp { bottom: 260px; }
+}
+@media (prefers-reduced-motion: reduce) { .spool { animation: none; } .rin, .grid figure { transition: none; } }
+</style>
+</head>
+<body>
+
+
+<div id="gate">
+  <div class="box">
+    <p class="sub">Nº 01 · Edició digital · Accés restringit</p>
+    <h1 class="mast">GEORPAU</h1>
+    <div class="seal" aria-hidden="true">G&amp;P</div>
+    <form id="gform" autocomplete="off">
+      <label for="pw" class="hint">Contrasenya. Pista: què som?</label>
+      <input id="pw" type="password" autocomplete="off" spellcheck="false" placeholder="········" required>
+      <button class="btn" id="gbtn" type="submit" style="justify-self:center">Obrir</button>
+      <p class="err" id="gerr" role="alert"></p>
+    </form>
+    <p class="note">Tot el contingut d’aquesta pàgina està xifrat. Sense la contrasenya, només es veu aquesta portada.</p>
+  </div>
+</div>
+
+<main id="app" hidden></main>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="vtitle">
+  <div class="vhead">
+    <div><div class="d" id="vdate"></div><h3 id="vtitle"></h3><p id="vtext"></p></div>
+    <button class="vclose" id="vclose">Tancar</button>
+  </div>
+  <div class="vstage" id="vstage"></div>
+  <div><div class="vfoot" id="vfoot"></div><div class="vcount" id="vcount"></div></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var SALT = '3bcdf6f974d5a394ee076dac4e4bf6a6', ITER = 210000;
+  var KEY = null, D = null, CACHE = {}, QUEUE = [], ACTIVE = 0;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var DIA = new RegExp('[\\u0300-\\u036f]', 'g');
+  var norm = function (s) { return s.normalize('NFD').replace(DIA, '').toLowerCase().replace(/[^a-z0-9]/g, ''); };
+  var hex = function (h) { var a = new Uint8Array(h.length / 2); for (var i = 0; i < a.length; i++) a[i] = parseInt(h.substr(i * 2, 2), 16); return a; };
+
+  function derive(pw) {
+    return crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']).then(function (base) {
+      return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: hex(SALT), iterations: ITER, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    });
+  }
+  function fetchDec(name) {
+    return fetch('m/' + name + '.txt').then(function (r) { if (!r.ok) throw new Error('fetch'); return r.text(); }).then(function (t) {
+      var bin = atob(t.trim()), n = bin.length, buf = new Uint8Array(n); for (var i = 0; i < n; i++) buf[i] = bin.charCodeAt(i);
+      return crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.subarray(0, 12) }, KEY, buf.subarray(12));
+    });
+  }
+  // decrypted object URLs, max 6 in flight
+  function url(id) {
+    if (CACHE[id]) return CACHE[id];
+    CACHE[id] = new Promise(function (res, rej) { QUEUE.push([id, res, rej]); pump(); });
+    return CACHE[id];
+  }
+  function pump() {
+    while (ACTIVE < 6 && QUEUE.length) {
+      var job = QUEUE.shift(); ACTIVE++;
+      (function (id, res, rej) {
+        var t = D.media[id].t, type = t === 'vid' ? 'video/mp4' : t === 'aud' ? 'audio/mp4' : 'image/jpeg';
+        fetchDec(id).then(function (b) { res(URL.createObjectURL(new Blob([b], { type: type }))); }, rej).then(function () { ACTIVE--; pump(); });
+      })(job[0], job[1], job[2]);
+    }
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); fill(e.target); } });
+  }, { rootMargin: '600px 0px' }) : null;
+  function fill(el) { url(el.dataset.id).then(function (u) { el.src = u; }); }
+  function lazy(el) { if (io) io.observe(el); else fill(el); }
+  function imgEl(id, cls, alt) {
+    var m = D.media[id], im = document.createElement('img');
+    im.className = cls || 'ph'; im.alt = alt || ''; im.dataset.id = m.t === 'vid' ? m.p : id;
+    var ref = m.t === 'vid' ? D.media[m.p] : m; im.style.setProperty('--ar', ref.w + '/' + ref.h);
+    im.width = ref.w; im.height = ref.h; lazy(im); return im;
+  }
+
+  // ---------------- gate ----------------
+  function unlock(pw, remember) {
+    return derive(pw).then(function (k) { KEY = k; return fetchDec('data'); }).then(function (b) {
+      D = JSON.parse(new TextDecoder().decode(b));
+      if (remember) { try { localStorage.setItem('gp_pw', pw); } catch (e) {} }
+      $('#gate').hidden = true; $('#app').hidden = false; render();
+    });
+  }
+  $('#gform').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var pw = norm($('#pw').value); $('#gerr').textContent = ''; $('#gbtn').textContent = 'Obrint…'; $('#gbtn').disabled = true;
+    unlock(pw, true).catch(function () { KEY = null; $('#gerr').textContent = 'No és aquesta. Torna-ho a provar.'; $('#gbtn').textContent = 'Obrir'; $('#gbtn').disabled = false; $('#pw').select(); });
+  });
+  try { var saved = localStorage.getItem('gp_pw'); if (saved) unlock(saved, false).catch(function () {}); } catch (e) {}
+
+  // ---------------- viewer ----------------
+  var V = { list: [], i: 0, last: null };
+  function openViewer(list, i, meta) {
+    V.list = list; V.i = i || 0; V.last = document.activeElement;
+    $('#vtitle').textContent = meta.n || ''; $('#vtext').textContent = meta.s || ''; $('#vdate').textContent = meta.d || '';
+    var foot = $('#vfoot'); foot.innerHTML = '';
+    list.forEach(function (id, k) {
+      var b = document.createElement('button'); b.setAttribute('aria-label', 'Element ' + (k + 1));
+      if (D.media[id].t === 'vid') b.className = 'isv';
+      var im = document.createElement('img'); im.alt = ''; im.dataset.id = D.media[id].t === 'vid' ? D.media[id].p : id; b.appendChild(im); fill(im);
+      b.onclick = function () { V.i = k; show(); }; foot.appendChild(b);
+    });
+    foot.hidden = list.length < 2;
+    $('#viewer').hidden = false; document.body.style.overflow = 'hidden'; show(); $('#vclose').focus();
+  }
+  function show() {
+    var id = V.list[V.i], m = D.media[id], st = $('#vstage');
+    st.innerHTML = '<span class="load">Revelant…</span>';
+    if (V.list.length > 1) {
+      ['p', 'n'].forEach(function (d) { var b = document.createElement('button'); b.className = 'vnav ' + d; b.textContent = d === 'p' ? '‹' : '›'; b.setAttribute('aria-label', d === 'p' ? 'Anterior' : 'Següent'); b.onclick = function () { step(d === 'p' ? -1 : 1); }; st.appendChild(b); });
+    }
+    url(id).then(function (u) {
+      if (V.list[V.i] !== id) return;
+      var el;
+      if (m.t === 'vid') { el = document.createElement('video'); el.controls = true; el.playsInline = true; el.autoplay = true; el.src = u; }
+      else { el = document.createElement('img'); el.src = u; el.alt = $('#vtitle').textContent; }
+      var ld = $('.load', st); if (ld) ld.replaceWith(el);
+    });
+    Array.prototype.forEach.call($('#vfoot').children, function (b, k) { b.setAttribute('aria-current', k === V.i ? 'true' : 'false'); if (k === V.i) b.scrollIntoView({ block: 'nearest', inline: 'center' }); });
+    $('#vcount').textContent = V.list.length > 1 ? (V.i + 1) + ' / ' + V.list.length : '';
+    if (V.list[V.i + 1]) url(V.list[V.i + 1]);
+  }
+  function step(d) { V.i = (V.i + d + V.list.length) % V.list.length; show(); }
+  function closeViewer() { $('#vstage').innerHTML = ''; $('#viewer').hidden = true; document.body.style.overflow = ''; if (V.last) V.last.focus(); }
+  $('#vclose').onclick = closeViewer;
+  document.addEventListener('keydown', function (e) {
+    if ($('#viewer').hidden) return;
+    if (e.key === 'Escape') closeViewer(); else if (e.key === 'ArrowRight') step(1); else if (e.key === 'ArrowLeft') step(-1);
+  });
+  var tx = null;
+  $('#vstage').addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  $('#vstage').addEventListener('touchend', function (e) { if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50 && V.list.length > 1) step(dx < 0 ? 1 : -1); tx = null; });
+
+  // ---------------- map geometry (illustrative) ----------------
+  var COAST = [[-1.2,42.95],[3.12,42.95],[3.05,42.75],[3.04,42.55],[3.1,42.5],[3.17,42.43],[3.32,42.32],[3.18,42.26],[3.12,42.13],[3.2,42.05],[3.13,41.85],[3.03,41.78],[2.8,41.67],[2.44,41.54],[2.25,41.43],[2.18,41.37],[2.1,41.3],[1.98,41.27],[1.81,41.23],[1.55,41.18],[1.38,41.13],[1.25,41.1],[1.14,41.07],[1.06,41.06],[0.95,41.02],[0.8,40.88],[0.73,40.8],[0.87,40.72],[0.74,40.62],[0.6,40.58],[0.47,40.47],[0.25,40.27],[0.03,39.98],[-0.07,39.85],[-0.22,39.67],[-0.33,39.47],[-0.3,39.3],[-0.25,39.16],[-0.15,38.99],[0,38.88],[0.11,38.84],[0.23,38.73],[0.1,38.66],[0.05,38.62],[-0.05,38.6],[-1.2,38.6]];
+  var ISLES = [
+    [[2.38,39.55],[2.52,39.7],[2.7,39.8],[2.95,39.92],[3.21,39.96],[3.12,39.85],[3.2,39.76],[3.48,39.71],[3.37,39.55],[3.26,39.42],[3.1,39.32],[3.05,39.27],[2.95,39.36],[2.75,39.51],[2.65,39.57],[2.55,39.5],[2.4,39.52]],
+    [[3.82,40.05],[4.05,40.07],[4.3,39.93],[4.28,39.82],[4.1,39.87],[3.95,39.93],[3.82,39.98]],
+    [[1.22,38.92],[1.3,38.98],[1.45,39.08],[1.6,39.03],[1.55,38.88],[1.38,38.85]],
+    [[1.4,38.72],[1.55,38.7],[1.47,38.65]]
+  ];
+  var BORDER = [[3.17,42.43],[2.87,42.45],[2.65,42.34],[2.4,42.38],[1.98,42.45],[1.73,42.5],[1.45,42.43],[0.7,42.85],[0,42.68],[-0.7,42.85],[-1.2,42.95]];
+  function proj(ext, W) {
+    var k = Math.cos(((ext[1] + ext[3]) / 2) * Math.PI / 180), s = W / ((ext[2] - ext[0]) * k);
+    return { H: (ext[3] - ext[1]) * s, p: function (c) { return [((c[0] - ext[0]) * k * s).toFixed(1), ((ext[3] - c[1]) * s).toFixed(1)]; } };
+  }
+  var poly = function (pts, P) { return pts.map(function (c) { return P.p(c).join(','); }).join(' '); };
+  var HEART = 'M0,6 C-12,-4 -10,-16 0,-10 C10,-16 12,-4 0,6 Z';
+  function pinSVG(pl, P, scale) {
+    var xy = P.p(pl.c), x = +xy[0], y = +xy[1], lo = pl.lo || 'r', fs = scale || 1;
+    var ax = lo === 'l' ? 'end' : lo === 'r' ? 'start' : 'middle';
+    var tx = lo === 'l' ? x - 15 : lo === 'r' ? x + 15 : x, ty = lo === 'u' ? y - 22 : lo === 'd' ? y + 30 : y + 5;
+    var mark = pl.big ? '<path class="heart" d="' + HEART + '" transform="translate(' + x + ',' + y + ') scale(1.5)"/>' : '<circle class="dot" cx="' + x + '" cy="' + y + '" r="8"/>';
+    return '<g class="pin" tabindex="0" role="button" data-p="' + pl.id + '" aria-label="' + esc(pl.n) + '">' + mark +
+      '<text class="name" x="' + tx + '" y="' + ty + '" text-anchor="' + ax + '" style="font-size:' + (17 * fs) + 'px">' + esc(pl.n) + '</text>' +
+      '<text class="date" x="' + tx + '" y="' + (ty + 18 * fs) + '" text-anchor="' + ax + '" style="font-size:' + (15 * fs) + 'px">' + esc(pl.d) + '</text></g>';
+  }
+  function mainMap() {
+    var ext = [-1.2, 38.6, 4.4, 42.95], P = proj(ext, 1000), H = P.H.toFixed(0), out = [];
+    out.push('<svg viewBox="0 0 1000 ' + H + '" role="img" aria-label="Mapa dels nostres llocs a Catalunya, València i les Balears">');
+    out.push('<rect width="1000" height="' + H + '" fill="var(--sea)"/>');
+    for (var i = 1; i < 6; i++) out.push('<path d="M0,' + (i * H / 6) + ' q250,-14 500,0 t500,0" fill="none" stroke="#cfd9d5" stroke-width="2"/>');
+    out.push('<polygon points="' + poly(COAST, P) + '" fill="var(--land)" stroke="#bfae92" stroke-width="2"/>');
+    ISLES.forEach(function (is) { out.push('<polygon points="' + poly(is, P) + '" fill="var(--land)" stroke="#bfae92" stroke-width="2"/>'); });
+    out.push('<polyline points="' + poly(BORDER, P) + '" fill="none" stroke="#a8977c" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>');
+    var lab = function (c, t, sz, it) { var q = P.p(c); return '<text x="' + q[0] + '" y="' + q[1] + '" text-anchor="middle" style="font:' + (it ? 'italic 400 ' : '700 ') + sz + 'px ' + (it ? 'var(--title)' : 'var(--sans)') + ';letter-spacing:' + (it ? '0' : '.3em') + ';fill:#a8977c">' + t + '</text>'; };
+    out.push(lab([1.3, 42.8], 'FRANÇA', 15), lab([1.35, 41.72], 'CATALUNYA', 17), lab([-0.75, 39.65], 'VALÈNCIA', 15), lab([2.4, 40.45], 'Mar Mediterrània', 30, 1), lab([3.0, 40.12], 'Illes Balears', 18, 1));
+    var bz = P.p([2.0, 41.53]), bz2 = P.p([2.26, 41.33]);
+    out.push('<rect class="zone" data-zone="bcn" tabindex="0" role="button" aria-label="Amplia Barcelona i Sant Cugat" x="' + bz[0] + '" y="' + bz[1] + '" width="' + (bz2[0] - bz[0]) + '" height="' + (bz2[1] - bz[1]) + '" rx="6"/>');
+    var lb = P.p([2.32, 41.47]);
+    out.push('<text x="' + lb[0] + '" y="' + lb[1] + '" style="font:italic 400 17px var(--title);fill:var(--granat)">Barcelona i Sant Cugat →</text>');
+    D.places.filter(function (p) { return p.z === 'cat'; }).forEach(function (p) { out.push(pinSVG(p, P)); });
+    // Roma stamp
+    var r = P.p([3.85, 39.0]);
+    out.push('<g class="pin" tabindex="0" role="button" data-p="roma" aria-label="Roma"><circle cx="' + r[0] + '" cy="' + r[1] + '" r="62" fill="var(--card)" stroke="var(--granat)" stroke-width="3"/><circle cx="' + r[0] + '" cy="' + r[1] + '" r="54" fill="none" stroke="var(--granat)" stroke-width="1" stroke-dasharray="3 4"/>' +
+      '<path class="heart" d="' + HEART + '" transform="translate(' + r[0] + ',' + (+r[1] - 22) + ') scale(1.2)"/>' +
+      '<text x="' + r[0] + '" y="' + (+r[1] + 14) + '" text-anchor="middle" style="font:400 30px var(--display);fill:var(--granat);stroke:none">ROMA</text>' +
+      '<text x="' + r[0] + '" y="' + (+r[1] + 36) + '" text-anchor="middle" class="date" style="stroke:none">20–22.12.24 · 860 km</text></g>');
+    out.push('</svg>');
+    return out.join('');
+  }
+  function bcnMap() {
+    var ext = [2.0, 41.345, 2.225, 41.505], P = proj(ext, 900), H = P.H.toFixed(0), out = [];
+    out.push('<svg viewBox="0 0 900 ' + H + '" role="img" aria-label="Mapa de Barcelona i Sant Cugat">');
+    out.push('<rect width="900" height="' + H + '" fill="var(--land)"/>');
+    var sea = [[2.0, 41.30], [2.10, 41.345], [2.15, 41.355], [2.175, 41.37], [2.19, 41.38], [2.205, 41.392], [2.225, 41.41], [2.26, 41.41], [2.26, 41.30]];
+    out.push('<polygon points="' + poly(sea, P) + '" fill="var(--sea)" stroke="#bfae92" stroke-width="2"/>');
+    var hills = [[2.0, 41.442], [2.06, 41.448], [2.12, 41.455], [2.17, 41.462], [2.225, 41.47], [2.225, 41.444], [2.17, 41.437], [2.12, 41.43], [2.06, 41.422], [2.0, 41.415]];
+    out.push('<polygon points="' + poly(hills, P) + '" fill="#d9dfc6" stroke="#b9c2a0" stroke-width="1.5"/>');
+    var t = function (c, s, sz, it, col) { var q = P.p(c); return '<text x="' + q[0] + '" y="' + q[1] + '" text-anchor="middle" style="font:' + (it ? 'italic 400 ' : '700 ') + sz + 'px ' + (it ? 'var(--title)' : 'var(--sans)') + ';letter-spacing:' + (it ? '0' : '.3em') + ';fill:' + (col || '#a8977c') + '">' + s + '</text>'; };
+    out.push(t([2.15, 41.447], 'Collserola', 22, 1, '#8f9a72'), t([2.19, 41.497], 'SANT CUGAT', 16), t([2.12, 41.405], 'BARCELONA', 16), t([2.205, 41.358], 'Mar', 24, 1));
+    D.places.filter(function (p) { return p.z === 'bcn'; }).forEach(function (p) { out.push(pinSVG(p, P, 1.05)); });
+    out.push('</svg>');
+    return out.join('');
+  }
+
+  // ---------------- render ----------------
+  function render() {
+    var A = $('#app'), h = [];
+    h.push('<header class="cover"><img class="bg" id="coverimg" alt="Georgina i Pau"><div class="wrap cover-in"><div>' +
+      '<div class="issue"><span>Nº 01 · Edició digital</span><span>18 · XII · 2026</span></div><h1 class="mast">GEORPAU</h1><div class="forher">per a tu, Georgina</div></div>' +
+      '<div><p class="kicker" style="color:#f3ccc6">L’exclusiva que no cabia en paper</p><p class="names">Georgina <em>&amp; Pau</em></p>' +
+      '<p class="dek">Tot el que no hi ha a la revista: els nostres llocs, més de tres-centes fotos, vídeos, un joc, un contracte i una carta amb lacre.</p>' +
+      '<nav class="toc" aria-label="Seccions"><a href="#mapa">Mapa</a><a href="#galeria">Fotos</a><a href="#cinema">Vídeos</a><a href="#joc">Joc</a><a href="#raons">Raons</a><a href="#contracte">Contracte</a><a href="#carta">Carta</a></nav></div></div></header>');
+    h.push('<section class="counter" aria-labelledby="t-junts"><div class="wrap"><div><p class="kicker">Junts des del 18 de desembre de 2023</p><h2 id="t-junts" style="color:#fbf3ea">El rellotge <em>no s’atura</em></h2></div>' +
+      '<div class="clock"><div class="unit"><b id="cd">–</b><span>dies</span></div><div class="unit"><b id="ch">–</b><span>hores</span></div><div class="unit"><b id="cm">–</b><span>minuts</span></div><div class="unit"><b id="cs">–</b><span>segons</span></div></div><p class="next" id="nextday"></p></div></section>');
+    h.push('<section id="mapa" aria-labelledby="t-mapa"><div class="wrap"><p class="kicker">Atles sentimental</p><h2 id="t-mapa">Els nostres <em>llocs</em></h2><p class="lead">Toca un punt per obrir-lo. Cada lloc té les seves fotos i, alguns, vídeos.</p>' +
+      '<div class="maps"><div class="mapcard"><span class="tag">Catalunya, València i Balears</span>' + mainMap() + '</div><div class="mapcard" id="bcnmap"><span class="tag">Barcelona i Sant Cugat</span>' + bcnMap() + '</div></div>' +
+      '<div class="maplist" id="maplist"></div></div></section>');
+    h.push('<section aria-labelledby="t-hist" style="padding-top:0"><div class="wrap"><p class="kicker">Cronologia</p><h2 id="t-hist">La nostra <em>història</em></h2><ol class="tl" id="tl"></ol></div></section>');
+    h.push('<section class="sheet" id="galeria" aria-labelledby="t-gal"><div class="wrap"><p class="kicker">Arxiu complet</p><h2 id="t-gal">El <em>full de contactes</em></h2><p class="lead">Tria una carpeta i toca qualsevol foto per veure-la gran.</p><div class="tabs" id="tabs"></div><p class="gsub" id="gsub"></p><div class="grid" id="grid"></div></div></section>');
+    h.push('<section id="cinema" aria-labelledby="t-cin"><div class="wrap"><p class="kicker">Sala 1 · Sessió contínua</p><h2 id="t-cin">Cinema <em>GEORPAU</em></h2><p class="lead">Set vídeos curts que no surten enlloc més. Hi ha més vídeos dins del mapa.</p><div class="cinema" id="cin"></div></div></section>');
+    h.push('<section class="quiz" id="joc" aria-labelledby="t-joc"><div class="wrap"><p class="kicker">El joc</p><h2 id="t-joc">Quant em <em>coneixes?</em></h2><p class="lead">Deu preguntes. Sense ajuda del públic.</p><div class="qbox" id="qbox" aria-live="polite"></div></div></section>');
+    h.push('<section id="raons" aria-labelledby="t-raons"><div class="wrap"><p class="kicker">Llista oberta</p><h2 id="t-raons">Per què <em>t’estimo</em></h2><p class="lead">Gira les cartes. N’hi ha dotze, però la llista no s’acaba aquí.</p><div class="rgrid" id="rgrid"></div></div></section>');
+    h.push('<section id="contracte" style="background:var(--paper-2)" aria-labelledby="t-con"><div class="wrap"><p class="kicker">Document oficial</p><h2 id="t-con">Contracte <em>d’amor</em></h2><p class="lead">Llegeix-lo bé i signa’l amb el dit.</p>' +
+      '<div class="doc"><h3>Contracte d’amor indefinit</h3><p class="parts">Entre la Georgina, d’ara endavant «la Cantant», i el Pau, d’ara endavant «el Roncador»</p><ol id="clauses"></ol>' +
+      '<div class="sigs"><div class="sig"><div class="line"><span class="pau">Pau</span></div><small><span>El Roncador</span></small></div>' +
+      '<div class="sig"><div class="line"><canvas id="sigpad" aria-label="Espai per signar"></canvas></div><small><span>La Cantant · signa aquí</span><button id="sigclear" type="button">Esborrar</button></small></div></div>' +
+      '<div class="stamp" id="stamp" hidden>Contracte vigent<br>18 · XII · 2026</div></div></div></section>');
+    h.push('<section class="song" aria-labelledby="t-song"><div class="wrap"><div class="tape" id="tape" aria-hidden="true"><div class="label"><span>Ceilings — L. McAlpine</span></div><div class="win"><i class="spool"></i><i class="spool"></i></div></div>' +
+      '<div><p class="kicker">Cara A</p><h2 id="t-song">La nostra <em>cançó</em></h2><p>Posa-la de fons mentre passes les pàgines. Ja saps quina és.</p><a class="btn" id="play" href="https://open.spotify.com/search/Ceilings%20Lizzy%20McAlpine" target="_blank" rel="noopener">Escolta Ceilings</a></div></div></section>');
+    h.push('<section class="letter" id="carta" aria-labelledby="t-carta"><div class="wrap"><p class="kicker" style="text-align:center">Correspondència privada</p><h2 id="t-carta" style="text-align:center">Per a tu, <em>Georgina</em></h2><div class="env">' +
+      '<div id="sealed"><button class="lacre" id="lacre" aria-expanded="false" aria-controls="msg">G&amp;P</button><p class="hint2">Trenca el lacre</p></div>' +
+      '<div class="msg" id="msg" hidden><p>Si has arribat fins aquí és que has trobat el codi amagat a la revista. Benvinguda a la part secreta de GEORPAU.</p>' +
+      '<p>Fa tres anys que el rellotge d’aquesta pàgina va començar a comptar, però jo ja t’estimava des de les passejades de primer de primària. Gràcies per Roma, per totes les rialles, per explicar-me cada història amb tots els detalls i per fer que cada dia sembli un número especial.</p>' +
+      '<p>T’estimo infinit elevat a infinit, infinites vegades.</p><p class="signa">Pau</p><button class="btn" id="audbtn" type="button">▶ Escolta el missatge del Pau</button></div></div></div></section>');
+    h.push('<section aria-labelledby="t-vals"><div class="wrap vals"><div><p class="kicker">Propers capítols</p><h2 id="t-vals">Tens <em>vals</em> per gastar</h2><p>Són a la caixa, al costat de la revista. Cada un es pot bescanviar quan vulguis. Sense data de caducitat.</p></div>' +
+      '<div class="stub" aria-hidden="true"><small>Val Nº 01 · Vàlid per a la Georgina</small><b>Un dinar al Machiroku</b><small>Com la primera vegada</small></div></div></section>');
+    h.push('<footer><div class="m">GEORPAU</div><p>Nº 01 · Exemplar únic · Fet a Barcelona amb molt d’amor</p><button class="btn ghost" id="lock" type="button">Tancar amb clau</button></footer>');
+    A.innerHTML = h.join('');
+
+    url(D.cover).then(function (u) { $('#coverimg').src = u; });
+    counter(); setInterval(counter, 1000);
+
+    // map interactions
+    var byId = {}; D.places.forEach(function (p) { byId[p.id] = p; });
+    function openPlace(id) { var p = byId[id]; if (p) openViewer(p.m, 0, p); }
+    Array.prototype.forEach.call(document.querySelectorAll('.pin'), function (g) {
+      g.addEventListener('click', function () { openPlace(g.dataset.p); });
+      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPlace(g.dataset.p); } });
+    });
+    var z = $('.zone'); var goB = function () { $('#bcnmap').scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+    z.addEventListener('click', goB); z.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goB(); } });
+    var ml = $('#maplist');
+    D.places.forEach(function (p) {
+      var b = document.createElement('button'); b.innerHTML = esc(p.n) + '<small>' + p.m.length + '</small>'; b.setAttribute('aria-label', p.n + ', ' + p.m.length + ' fotos i vídeos');
+      b.onclick = function () { openPlace(p.id); }; ml.appendChild(b);
+    });
+
+    // timeline
+    var tl = $('#tl');
+    D.timeline.forEach(function (e) {
+      var li = document.createElement('li'), a = document.createElement('div'); a.className = 'arch';
+      var im = imgEl(e.m, '', e.t); im.style.aspectRatio = 'auto'; a.appendChild(im); li.appendChild(a);
+      li.insertAdjacentHTML('beforeend', '<time>' + esc(e.d) + '</time><b>' + esc(e.t) + '</b><p>' + esc(e.s) + '</p>'); tl.appendChild(li);
+    });
+
+    // gallery
+    var tabs = $('#tabs');
+    D.gallery.forEach(function (g, k) {
+      var b = document.createElement('button'); b.innerHTML = esc(g.n) + '<span>' + g.m.length + '</span>'; b.setAttribute('aria-pressed', k === 0 ? 'true' : 'false');
+      b.onclick = function () { Array.prototype.forEach.call(tabs.children, function (x) { x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true'); showGal(g); };
+      tabs.appendChild(b);
+    });
+    showGal(D.gallery[0]);
+
+    // cinema
+    var cin = $('#cin');
+    D.cinema.forEach(function (id, k) {
+      var b = document.createElement('button'); b.className = 'reel'; b.setAttribute('aria-label', 'Reprodueix el vídeo ' + (k + 1));
+      b.appendChild(imgEl(id, '', '')); b.insertAdjacentHTML('beforeend', '<span>' + String(k + 1).padStart(2, '0') + '</span>');
+      b.onclick = function () { openViewer(D.cinema, k, { n: 'Cinema GEORPAU', d: 'Sessió contínua', s: '' }); }; cin.appendChild(b);
+    });
+
+    quiz(); reasons(); contract(); letter();
+    $('#play').addEventListener('click', function () { $('#tape').style.setProperty('--play', 'running'); });
+    $('#lock').onclick = function () { try { localStorage.removeItem('gp_pw'); } catch (e) {} location.reload(); };
+  }
+
+  function showGal(g) {
+    $('#gsub').textContent = g.s; var grid = $('#grid'); grid.innerHTML = '';
+    g.m.forEach(function (id, k) {
+      var f = document.createElement('figure'); f.style.setProperty('--r', (((k * 37) % 7) - 3) * 0.45 + 'deg');
+      var b = document.createElement('button'); b.setAttribute('aria-label', 'Amplia la foto ' + (k + 1)); b.appendChild(imgEl(id));
+      b.onclick = function () { openViewer(g.m, k, { n: g.n, s: g.s, d: (k + 1) + ' de ' + g.m.length }); };
+      f.appendChild(b); grid.appendChild(f);
+    });
+  }
+
+  function counter() {
+    var start = new Date(2023, 11, 18), now = new Date(), ms = Math.max(0, now - start);
+    var pad = function (n) { return String(n).padStart(2, '0'); };
+    $('#cd').textContent = Math.floor(ms / 864e5).toLocaleString('ca-ES'); $('#ch').textContent = pad(Math.floor(ms / 36e5) % 24);
+    $('#cm').textContent = pad(Math.floor(ms / 6e4) % 60); $('#cs').textContent = pad(Math.floor(ms / 1e3) % 60);
+    var y = now.getFullYear(), today = new Date(y, now.getMonth(), now.getDate()), ann = new Date(y, 11, 18);
+    var el = $('#nextday');
+    if (+today === +ann) el.innerHTML = 'Avui fem <strong>' + (y - 2023) + '</strong> anys junts. Felicitats, amor.';
+    else { if (today > ann) ann = new Date(y + 1, 11, 18); el.innerHTML = 'Falten <strong>' + Math.round((ann - today) / 864e5) + '</strong> dies per fer ' + (ann.getFullYear() - 2023) + ' anys junts.'; }
+  }
+
+  function quiz() {
+    var box = $('#qbox'), i = 0, score = 0, Q = D.quiz;
+    function q() {
+      if (i >= Q.length) return end();
+      var it = Q[i], h = '<div class="qtop"><span>Pregunta ' + (i + 1) + ' de ' + Q.length + '</span><span>' + score + ' encerts</span></div><div class="qbar"><i style="width:' + (i / Q.length * 100) + '%"></i></div><p class="qq">' + esc(it.q) + '</p><div class="qopts">';
+      it.a.forEach(function (a, k) { h += '<button type="button" data-k="' + k + '"><b>' + 'ABCD'[k] + '</b>' + esc(a) + '</button>'; });
+      box.innerHTML = h + '</div><p class="qexp" id="qexp"></p><button class="btn" id="qnext" type="button" hidden>Següent</button>';
+      Array.prototype.forEach.call(box.querySelectorAll('.qopts button'), function (b) {
+        b.onclick = function () {
+          var k = +b.dataset.k, ok = k === it.k; if (ok) score++;
+          Array.prototype.forEach.call(box.querySelectorAll('.qopts button'), function (x) { x.disabled = true; if (+x.dataset.k === it.k) x.classList.add('ok'); });
+          if (!ok) b.classList.add('ko');
+          $('#qexp').textContent = (ok ? 'Correcte. ' : 'Gairebé. ') + it.e; var n = $('#qnext'); n.hidden = false; n.textContent = i === Q.length - 1 ? 'Veure el resultat' : 'Següent'; n.focus();
+          n.onclick = function () { i++; q(); };
+        };
+      });
+    }
+    function end() {
+      var msg = score === Q.length ? 'Puntuació perfecta. Em coneixes millor que jo mateix.' : score >= 7 ? 'Molt bé. Ets oficialment experta en Pau.' : score >= 4 ? 'No està malament, però caldrà fer més cites d’estudi.' : 'Hmm. Proposo una escapada intensiva per repassar.';
+      box.innerHTML = '<div class="qend"><p class="kicker">Resultat</p><p class="score">' + score + '/' + Q.length + '</p><p class="qexp">' + msg + '</p><button class="btn" id="qagain" type="button">Tornar a jugar</button></div>';
+      $('#qagain').onclick = function () { i = 0; score = 0; q(); };
+    }
+    q();
+  }
+
+  function reasons() {
+    var g = $('#rgrid');
+    D.reasons.forEach(function (r, k) {
+      var b = document.createElement('button'); b.className = 'rcard'; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', 'Raó ' + (k + 1) + '. ' + r);
+      b.innerHTML = '<div class="rin"><div class="rf"><div><b>' + String(k + 1).padStart(2, '0') + '</b><small>Gira la carta</small></div></div><div class="rb">' + esc(r) + '</div></div>';
+      b.onclick = function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); }; g.appendChild(b);
+    });
+  }
+
+  function contract() {
+    var ol = $('#clauses');
+    D.contract.forEach(function (c) { ol.insertAdjacentHTML('beforeend', '<li><span><b>' + esc(c[0]) + '</b>' + esc(c[1]) + '</span></li>'); });
+    var cv = $('#sigpad'), ctx, drawing = false, signed = false;
+    function size() {
+      var r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1, prev = signed ? cv.toDataURL() : null;
+      cv.width = r.width * dpr; cv.height = r.height * dpr; ctx = cv.getContext('2d'); ctx.scale(dpr, dpr);
+      ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#92182a';
+      var src = prev; if (!src) { try { src = localStorage.getItem('gp_sig'); } catch (e) {} }
+      if (src) { var im = new Image(); im.onload = function () { ctx.drawImage(im, 0, 0, r.width, r.height); }; im.src = src; signed = true; $('#stamp').hidden = false; }
+    }
+    function pos(e) { var r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+    cv.addEventListener('pointerdown', function (e) { drawing = true; cv.setPointerCapture(e.pointerId); var p = pos(e); ctx.beginPath(); ctx.moveTo(p[0], p[1]); });
+    cv.addEventListener('pointermove', function (e) { if (!drawing) return; var p = pos(e); ctx.lineTo(p[0], p[1]); ctx.stroke(); });
+    var up = function () { if (!drawing) return; drawing = false; signed = true; $('#stamp').hidden = false; try { localStorage.setItem('gp_sig', cv.toDataURL()); } catch (e) {} };
+    cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+    $('#sigclear').onclick = function () { ctx.clearRect(0, 0, cv.width, cv.height); signed = false; $('#stamp').hidden = true; try { localStorage.removeItem('gp_sig'); } catch (e) {} };
+    size(); var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(size, 200); });
+  }
+
+  function letter() {
+    var lacre = $('#lacre'), audio = null;
+    lacre.onclick = function () { $('#sealed').hidden = true; $('#msg').hidden = false; lacre.setAttribute('aria-expanded', 'true'); playAudio(); };
+    function playAudio() {
+      var b = $('#audbtn'); b.textContent = 'Carregant…';
+      url(D.audio).then(function (u) {
+        if (!audio) { audio = new Audio(u); audio.onended = function () { b.textContent = '▶ Escolta el missatge del Pau'; }; }
+        audio.currentTime = 0; audio.play().then(function () { b.textContent = '■ Atura el missatge'; }, function () { b.textContent = '▶ Escolta el missatge del Pau'; });
+      });
+    }
+    $('#audbtn').onclick = function () { if (audio && !audio.paused) { audio.pause(); this.textContent = '▶ Escolta el missatge del Pau'; } else playAudio(); };
+  }
+})();
+</script>
+
+</body>
+</html>
